@@ -1,13 +1,10 @@
 package bof_java8.t01;
 
-import com.google.common.base.Function;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static com.google.common.collect.Iterables.transform;
 import static java.util.Arrays.asList;
 import static org.fest.assertions.Assertions.assertThat;
 
