@@ -12,6 +12,9 @@ import java.util.Map;
 
 import static org.fest.assertions.Assertions.assertThat;
 
+/**
+ * Group elements in a collection according to a criteria
+ */
 public class AgeTest {
 
     @Test
