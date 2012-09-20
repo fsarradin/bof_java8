@@ -13,7 +13,7 @@ public class PhoneCoderTest {
 
     @Test
     public void should_get_5282_when_JAVA() {
-        assertThat(PhoneCoder.wordCode("Java")).isEqualTo("5282");
+        assertThat(PhoneCoder.getNumberFrom("Java")).isEqualTo("5282");
     }
 
     @Test

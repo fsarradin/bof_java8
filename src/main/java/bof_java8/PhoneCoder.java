@@ -3,7 +3,6 @@ package bof_java8;
 import com.google.common.annotations.VisibleForTesting;
 
 import java.util.*;
-import java.util.functions.Factory;
 
 public class PhoneCoder {
 
@@ -18,10 +17,10 @@ public class PhoneCoder {
         put('9', "WXYZ");
     }};
 
-    private static final Map<Character, Character> CHAR_CODE = getCharCode(MNEMONICS);
-    private static Map<Character, Character> getCharCode(Map<Character, String> mnemonics) {
+    private static final Map<Character, Character> LETTER_TO_DIGIT = getCharCode();
+    private static Map<Character, Character> getCharCode() {
         Map<Character, Character> charCode = new HashMap<>();
-        mnemonics.forEach((digit, letters) -> {
+        MNEMONICS.forEach((digit, letters) -> {
             letters.asChars().forEach(letter -> {
                 charCode.put(letter, digit);
             });
@@ -37,35 +36,36 @@ public class PhoneCoder {
 //        });
 //    }};
 
-    private final Map<String, Set<String>> numberForWords;
+    private final Map<String, Set<String>> numberToWord;
 
     public PhoneCoder(Set<String> words) {
-        this.numberForWords = distributeWords(words);
+        this.numberToWord = distributeWords(words);
     }
 
     public Set<String> translate(String number) {
-        return numberForWords.get(number);
+        return numberToWord.get(number);
     }
 
     @VisibleForTesting
-    protected static String wordCode(String word) {
+    protected static String getNumberFrom(String word) {
         return word.toUpperCase().asChars()
-                .map(letter -> CHAR_CODE.get(letter).toString())
+                .map(letter -> LETTER_TO_DIGIT.get(letter).toString())
                 .reduce("", (number, digit) -> number + digit);
     }
 
-    public static Map<String, Set<String>> distributeWords(Set<String> words) {
-        Map<String, Set<String>> map = new HashMap<>();
+    @VisibleForTesting
+    protected static Map<String, Set<String>> distributeWords(Set<String> words) {
+        Map<String, Set<String>> distributedWords = new HashMap<>();
 
         words.forEach(word -> {
-            String number = wordCode(word);
-            if (!map.containsKey(number)) {
-                map.put(number, new HashSet<String>());
+            String number = getNumberFrom(word);
+            if (!distributedWords.containsKey(number)) {
+                distributedWords.put(number, new HashSet<String>());
             }
-            map.get(number).add(word.toUpperCase());
+            distributedWords.get(number).add(word.toUpperCase());
         });
 
-        return map;
+        return distributedWords;
     }
 
 }
