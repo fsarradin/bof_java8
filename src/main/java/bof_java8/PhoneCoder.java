@@ -47,14 +47,14 @@ public class PhoneCoder {
     }
 
     @VisibleForTesting
-    protected static String getNumberFrom(String word) {
+    public static String getNumberFrom(String word) {
         return word.toUpperCase().asChars()
                 .map(letter -> LETTER_TO_DIGIT.get(letter).toString())
                 .reduce("", (number, digit) -> number + digit);
     }
 
     @VisibleForTesting
-    protected static Map<String, Set<String>> distributeWords(Set<String> words) {
+    public static Map<String, Set<String>> distributeWords(Set<String> words) {
         Map<String, Set<String>> distributedWords = new HashMap<>();
 
         words.forEach(word -> {
