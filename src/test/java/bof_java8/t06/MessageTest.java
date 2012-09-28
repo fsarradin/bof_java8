@@ -1,4 +1,4 @@
-package bof_java8.t04;
+package bof_java8.t06;
 
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class MessageTest {
         String getMessage();
     }
 
-    private static class MessageImpl implements Message {
+    private static final class MessageImpl implements Message {
         private final String message;
 
         public MessageImpl(String message) {

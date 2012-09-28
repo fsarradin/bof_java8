@@ -1,4 +1,4 @@
-package bof_java8;
+package bof_java8.t06;
 
 import org.junit.Test;
 
