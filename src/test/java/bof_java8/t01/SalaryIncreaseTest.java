@@ -1,7 +1,10 @@
 package bof_java8.t01;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import org.junit.Test;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +25,8 @@ public class SalaryIncreaseTest {
         assertThat(result).containsOnly(20_400.0, 30_600.0, 40_800.0, 51_000.0);
     }
 
-    private Iterable<Double> increaseSalaries_imperative(Iterable<Double> salaries, double rate) {
+    private Iterable<Double> increaseSalaries_imperative(Iterable<Double> salaries,
+                                                         double rate) {
         List<Double> result = new ArrayList<>();
 
         for (Double salary : salaries) {
@@ -41,7 +45,8 @@ public class SalaryIncreaseTest {
         assertThat(result).containsOnly(20_400.0, 30_600.0, 40_800.0, 51_000.0);
     }
 
-    private Iterable<Double> increaseSalaries_guava(Iterable<Double> salaries, double rate) {
+    private Iterable<Double> increaseSalaries_guava(Iterable<Double> salaries,
+                                                    double rate) {
         return null;
     }
 
@@ -54,7 +59,8 @@ public class SalaryIncreaseTest {
         assertThat(result).containsOnly(20_400.0, 30_600.0, 40_800.0, 51_000.0);
     }
 
-    private Iterable<Double> increaseSalaries_java8(Iterable<Double> salaries, double rate) {
+    private Iterable<Double> increaseSalaries_java8(Iterable<Double> salaries,
+                                                    double rate) {
         return null;
     }
 
