@@ -1,4 +1,4 @@
-package bof_java8.t06;
+package bof_java8.t08;
 
 import org.junit.Test;
 
@@ -6,7 +6,8 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.assertThat;
+
 
 public class FakeBrokenMixinTest {
 
@@ -35,7 +36,7 @@ public class FakeBrokenMixinTest {
 
         assertThat(x1).isNotEqualTo(x2);
 
-//        assertThat(x1.getName()).isNotEqualTo(x2.getName());
+        assertThat(x1.getName()).isNotEqualTo(x2.getName());
     }
 
 }
