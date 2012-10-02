@@ -1,9 +1,9 @@
-package bof_java8.t04;
+package bof_java8.t08;
 
 import com.google.common.base.Function;
 import org.junit.Test;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 public class OptimTest {
 
