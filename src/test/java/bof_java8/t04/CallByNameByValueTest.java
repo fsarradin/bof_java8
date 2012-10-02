@@ -5,6 +5,8 @@ import org.junit.Test;
 import java.util.functions.Block;
 import java.util.functions.Factory;
 
+import static org.fest.assertions.api.Assertions.assertThat;
+
 public class CallByNameByValueTest {
 
     public boolean loop() {
@@ -19,14 +21,18 @@ public class CallByNameByValueTest {
         return a.make() && b.make();
     }
 
-    @Test(expected = StackOverflowError.class)
+    @Test
     public void should_complain() {
-        and_byValue(false, loop());
+        boolean result = and_byValue(false, loop());
+
+        assertThat(result).isFalse();
     }
 
     @Test
     public void should_succeed() {
-        and_byName(() -> false, () -> loop());
+        boolean result = and_byName(() -> false, () -> loop());
+
+        assertThat(result).isFalse();
     }
 
 }
