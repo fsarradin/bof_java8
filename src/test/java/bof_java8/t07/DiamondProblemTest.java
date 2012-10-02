@@ -8,10 +8,10 @@ public class DiamondProblemTest {
         void enter();
     }
 
-    public static interface Garage {
+    public static interface Garage extends HouseElement {
     }
 
-    public static interface Veranda {
+    public static interface Veranda extends HouseElement {
     }
 
     public static interface MyHouse extends Veranda, Garage {
