@@ -1,16 +1,11 @@
 package bof_java8.t03;
 
-import org.fest.assertions.Condition;
+import org.fest.assertions.core.Condition;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Group elements in a collection according to a criteria
@@ -77,11 +72,11 @@ public class AgeTest {
                 = distribute_imperative(persons);
 
         assertThat(personDistribution.get(DevelopmentStage.INFANT))
-                .satisfies(containsOnlyPersonWithName("Alexander"));
+                .are(personWithName("Alexander"));
         assertThat(personDistribution.get(DevelopmentStage.CHILD))
-                .satisfies(containsOnlyPersonWithName("Brice"));
+                .are(personWithName("Brice"));
         assertThat(personDistribution.get(DevelopmentStage.ADULT))
-                .satisfies(containsOnlyPersonWithName("Bob"));
+                .are(personWithName("Bob"));
     }
 
     private Map<DevelopmentStage, ? extends Iterable<Person>> distribute_imperative(Iterable<Person> persons) {
@@ -113,22 +108,22 @@ public class AgeTest {
                 = distribute_java8(persons);
 
         assertThat(personDistribution.get(DevelopmentStage.INFANT))
-                .satisfies(containsOnlyPersonWithName("Alexander"));
+                .are(personWithName("Alexander"));
         assertThat(personDistribution.get(DevelopmentStage.CHILD))
-                .satisfies(containsOnlyPersonWithName("Brice"));
+                .are(personWithName("Brice"));
         assertThat(personDistribution.get(DevelopmentStage.ADULT))
-                .satisfies(containsOnlyPersonWithName("Bob"));
+                .are(personWithName("Bob"));
     }
 
     private Map<DevelopmentStage, ? extends Iterable<Person>> distribute_java8(Iterable<Person> persons) {
         return null;
     }
 
-    private Condition<Iterator<?>> containsOnlyPersonWithName(final String name) {
-        return new Condition<Iterator<?>>() {
+    private Condition<Person> personWithName(final String name) {
+        return new Condition<Person>() {
             @Override
-            public boolean matches(Iterator<?> iterator) {
-                return name.equals(((Person) iterator.next()).getName()) && !iterator.hasNext();
+            public boolean matches(Person person) {
+                return name.equals(person.getName());
             }
         };
     }

@@ -1,18 +1,19 @@
 package bof_java8.t02;
 
-import org.fest.assertions.Delta;
+import org.fest.assertions.data.Offset;
 import org.junit.Test;
 
 import java.util.Arrays;
 
-import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.offset;
 
 /**
  * Aggregate the result of computations
  */
 public class TotalTest {
 
-    private static final Delta DELTA = Delta.delta(1e-7);
+    private static final Offset<Double> OFFSET = offset(1e-7);
 
     private static class Product {
 
@@ -51,7 +52,7 @@ public class TotalTest {
 
         double total = getTotal_imperative(products);
 
-        assertThat(total).isEqualTo(30.0, DELTA);
+        assertThat(total).isEqualTo(30.0, OFFSET);
     }
 
     private double getTotal_imperative(Iterable<Product> products) {
@@ -74,7 +75,7 @@ public class TotalTest {
 
         double total = getTotal_java8(products);
 
-        assertThat(total).isEqualTo(30.0, DELTA);
+        assertThat(total).isEqualTo(30.0, OFFSET);
     }
 
     private double getTotal_java8(Iterable<Product> products) {

@@ -1,15 +1,12 @@
 package bof_java8.t01;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
 import org.junit.Test;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
  * Map a transformation on a collection
