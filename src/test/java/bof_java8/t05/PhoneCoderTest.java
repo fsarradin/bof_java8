@@ -33,7 +33,7 @@ public class PhoneCoderTest {
     public void should_constains_JAVA() {
         Set<String> words = new HashSet<>(Arrays.asList("Java"));
 
-        Map<String, Set<String>> map = PhoneCoder.distributeWords(words);
+        Map<String, Collection<String>> map = PhoneCoder.distributeWords(words);
 
         assertThat(map.get("5282")).contains("JAVA");
     }
@@ -43,7 +43,7 @@ public class PhoneCoderTest {
         Set<String> words = new HashSet<>(Arrays.asList("Java"));
         PhoneCoder phoneCoder = new PhoneCoder(words);
 
-        Set<String> result = phoneCoder.translate("5282");
+        Collection<String> result = phoneCoder.translate("5282");
 
         assertThat(result).contains("JAVA");
     }
