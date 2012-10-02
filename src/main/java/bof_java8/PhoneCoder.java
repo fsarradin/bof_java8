@@ -15,37 +15,23 @@ public class PhoneCoder {
         put('9', "WXYZ");
     }};
 
-    private static final Map<Character, Character> CHAR_TO_DIGIT = charToDigit(MNEMONICS);
     public static Map<Character, Character> charToDigit(Map<Character, String> mnemonics) {
-        HashMap<Character, Character> charToDigit = new HashMap<>();
-
-        mnemonics.forEach((digit, letters) -> {
-            charToDigit.addAll(letters.asChars().mapped(letter -> digit));
-        });
-
-        return charToDigit;
+        return null;
     }
 
     public static String getNumberFrom(String word) {
-        return word.toUpperCase().asChars()
-                .map(letter -> CHAR_TO_DIGIT.get(letter).toString())
-                .reduce("", (result, digit) -> result + digit);
+        return null;
     }
 
     public static Map<String, Collection<String>> distributeWords(Set<String> words) {
-        return words.stream()
-                .map(word -> word.toUpperCase())
-                .groupBy(PhoneCoder::getNumberFrom);
+        return null;
     }
 
-    private Map<String, Collection<String>> numbers;
-
     public PhoneCoder(Set<String> words) {
-        this.numbers = distributeWords(words);
     }
 
     public Collection<String> translate(String number) {
-        return numbers.get(number);
+        return null;
     }
 
 }
