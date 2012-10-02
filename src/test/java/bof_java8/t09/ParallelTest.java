@@ -9,7 +9,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class ParallelTest {
 
     @Test
-    public void should_() {
+    public void test_performance() {
         List<Long> longs = new ArrayList<>();
 
         for (long i = 0; i < 2_000_000; i++) {
