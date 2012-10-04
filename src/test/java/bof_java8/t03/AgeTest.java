@@ -4,7 +4,9 @@ import org.fest.assertions.core.Condition;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.streams.Streams;
 
+import static java.util.streams.Streams.stream;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 /**
@@ -116,7 +118,8 @@ public class AgeTest {
     }
 
     private Map<DevelopmentStage, ? extends Iterable<Person>> distribute_java8(Iterable<Person> persons) {
-        return null;
+        return stream(persons)
+                .groupBy(AgeTest::getDevelopmentStage);
     }
 
     private Condition<Person> personWithName(final String name) {

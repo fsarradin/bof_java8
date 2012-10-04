@@ -1,9 +1,12 @@
 package bof_java8.t01;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.streams.Streams;
 
 import static java.util.Arrays.asList;
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -43,8 +46,8 @@ public class SalaryIncreaseTest {
     }
 
     private Iterable<Double> increaseSalaries_guava(Iterable<Double> salaries,
-                                                    double rate) {
-        return null;
+                                                    final double rate) {
+        return Iterables.transform(salaries, salary -> salary * (1.0 + rate));
     }
 
     @Test
@@ -58,7 +61,9 @@ public class SalaryIncreaseTest {
 
     private Iterable<Double> increaseSalaries_java8(Iterable<Double> salaries,
                                                     double rate) {
-        return null;
+        return Streams.stream(salaries)
+                .map(salary -> salary * (1.0 + rate))
+                .into(new ArrayList<Double>());
     }
 
 }

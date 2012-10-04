@@ -4,6 +4,7 @@ import org.fest.assertions.data.Offset;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.streams.Streams;
 
 import static java.util.streams.Streams.stream;
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -58,7 +59,7 @@ public class TotalTest {
         double total = 0.0; // initialization
 
         for (Product product : products) {
-            total = total + product.getUnitPrice() * product.getQuantity();
+            total += product.getUnitPrice() * product.getQuantity();
         }
 
         return total;
@@ -78,7 +79,10 @@ public class TotalTest {
     }
 
     private double getTotal_java8(Iterable<Product> products) {
-        return 0.0;
+        return Streams.stream(products)
+                .map(product -> product.getQuantity() * product.getUnitPrice())
+                .reduce((subTotal, price) -> subTotal + price)
+                .orElse(0.0);
     }
 
     private static final Offset<Double> OFFSET = offset(1e-7);
