@@ -5,7 +5,7 @@ import org.junit.Test;
 public class DiamondProblemTest {
 
     public static interface HouseElement {
-        void enter();
+        void enter() default { ; };
     }
 
     public static interface Garage extends HouseElement {
