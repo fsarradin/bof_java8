@@ -7,13 +7,13 @@ public class MultipleDefinitionProblemTest {
     public static interface Garage {
         void enterByGarage();
 
-        void enter() default { enterByGarage(); }
+        default void enter() { enterByGarage(); }
     }
 
     public static interface Veranda {
         void enterByVeranda();
 
-        void enter() default { enterByVeranda(); }
+        default void enter() { enterByVeranda(); }
     }
 
 //    public static interface MyHouse extends Veranda, Garage {

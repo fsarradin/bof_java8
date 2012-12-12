@@ -2,8 +2,7 @@ package bof_java8.t04;
 
 import org.junit.Test;
 
-import java.util.functions.Block;
-import java.util.functions.Factory;
+import java.util.function.Supplier;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -17,8 +16,8 @@ public class CallByNameByValueTest {
         return a && b;
     }
 
-    public boolean and_byName(Factory<Boolean> a, Factory<Boolean> b) {
-        return a.make() && b.make();
+    public boolean and_byName(Supplier<Boolean> a, Supplier<Boolean> b) {
+        return a.get() && b.get();
     }
 
     @Test

@@ -4,8 +4,8 @@ import org.fest.assertions.data.Offset;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.Collection;
 
-import static java.util.streams.Streams.stream;
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.fest.assertions.api.Assertions.offset;
 
@@ -43,7 +43,7 @@ public class TotalTest {
 
     @Test
     public void should_get_total_from_products_imperative_way() {
-        Iterable<Product> basket = Arrays.asList(
+        Collection<Product> basket = Arrays.asList(
                 new Product("aaa", 10.0, 1),
                 new Product("bbb", 5.0, 2),
                 new Product("ccc", 2.0, 5)
@@ -54,7 +54,7 @@ public class TotalTest {
         assertThat(total).isEqualTo(30.0, OFFSET);
     }
 
-    private double getTotal_imperative(Iterable<Product> products) {
+    private double getTotal_imperative(Collection<Product> products) {
         double total = 0.0; // initialization
 
         for (Product product : products) {
@@ -66,7 +66,7 @@ public class TotalTest {
 
     @Test
     public void should_get_total_from_products_java8_way() {
-        Iterable<Product> basket = Arrays.asList(
+        Collection<Product> basket = Arrays.asList(
                 new Product("aaa", 10.0, 1),
                 new Product("bbb", 5.0, 2),
                 new Product("ccc", 2.0, 5)
@@ -77,7 +77,7 @@ public class TotalTest {
         assertThat(total).isEqualTo(30.0, OFFSET);
     }
 
-    private double getTotal_java8(Iterable<Product> products) {
+    private double getTotal_java8(Collection<Product> products) {
         return 0.0;
     }
 

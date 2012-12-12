@@ -62,13 +62,13 @@ public class AgeTest {
 
     @Test
     public void should_distributed_ages_imperative_way() {
-        Iterable<Person> persons = Arrays.asList(
+        Collection<Person> persons = Arrays.asList(
                 new Person("Bob", 30),
                 new Person("Brice", 10),
                 new Person("Alexander", 1)
         );
 
-        Map<DevelopmentStage, ? extends Iterable<Person>> personDistribution
+        Map<DevelopmentStage, ? extends Collection<Person>> personDistribution
                 = distribute_imperative(persons);
 
         assertThat(personDistribution.get(DevelopmentStage.INFANT))
@@ -79,7 +79,7 @@ public class AgeTest {
                 .are(personWithName("Bob"));
     }
 
-    private Map<DevelopmentStage, ? extends Iterable<Person>> distribute_imperative(Iterable<Person> persons) {
+    private Map<DevelopmentStage, ? extends Collection<Person>> distribute_imperative(Collection<Person> persons) {
         Map<DevelopmentStage, Collection<Person>> distribution = new HashMap<>();
 
         for (Person person : persons) {
@@ -98,13 +98,13 @@ public class AgeTest {
 
     @Test
     public void should_distributed_ages_java8_way() {
-        Iterable<Person> persons = Arrays.asList(
+        Collection<Person> persons = Arrays.asList(
                 new Person("Bob", 30),
                 new Person("Brice", 10),
                 new Person("Alexander", 1)
         );
 
-        Map<DevelopmentStage, ? extends Iterable<Person>> personDistribution
+        Map<DevelopmentStage, ? extends Collection<Person>> personDistribution
                 = distribute_java8(persons);
 
         assertThat(personDistribution.get(DevelopmentStage.INFANT))
@@ -115,7 +115,7 @@ public class AgeTest {
                 .are(personWithName("Bob"));
     }
 
-    private Map<DevelopmentStage, ? extends Iterable<Person>> distribute_java8(Iterable<Person> persons) {
+    private Map<DevelopmentStage, ? extends Collection<Person>> distribute_java8(Collection<Person> persons) {
         return null;
     }
 

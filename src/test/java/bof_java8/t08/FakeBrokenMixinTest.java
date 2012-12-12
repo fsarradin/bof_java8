@@ -15,8 +15,8 @@ public class FakeBrokenMixinTest {
 
         static Map<FakeBrokenMixin, String> NAMES = Collections.synchronizedMap(new WeakHashMap<FakeBrokenMixin, String>());
 
-        String getName() default { return NAMES.get(this); }
-        void setName(String name) default { NAMES.put(this, name); }
+        default String getName() { return NAMES.get(this); }
+        default void setName(String name) { NAMES.put(this, name); }
 
     }
 
