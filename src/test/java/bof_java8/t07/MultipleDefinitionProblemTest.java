@@ -16,12 +16,16 @@ public class MultipleDefinitionProblemTest {
         default void enter() { enterByVeranda(); }
     }
 
-//    public static interface MyHouse extends Veranda, Garage {
-//    }
+    public static interface MyHouse extends Veranda, Garage {
+        @Override
+        default void enter() {
+            Veranda.super.enter();
+        }
+    }
 
     @Test
     public void test_myHouse() {
-//        MyHouse house = null;
+        MyHouse house = null;
     }
 
 }

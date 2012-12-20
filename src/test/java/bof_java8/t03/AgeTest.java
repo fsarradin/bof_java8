@@ -116,7 +116,7 @@ public class AgeTest {
     }
 
     private Map<DevelopmentStage, ? extends Collection<Person>> distribute_java8(Collection<Person> persons) {
-        return null;
+        return persons.stream().groupBy(AgeTest::getDevelopmentStage);
     }
 
     private Condition<Person> personWithName(final String name) {

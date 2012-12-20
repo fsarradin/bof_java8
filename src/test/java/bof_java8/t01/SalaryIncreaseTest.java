@@ -1,5 +1,7 @@
 package bof_java8.t01;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Collections2;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -45,7 +47,7 @@ public class SalaryIncreaseTest {
 
     private Collection<Double> increaseSalaries_guava(Collection<Double> salaries,
                                                       double rate) {
-        return null;
+        return Collections2.transform(salaries, salary -> salary * (1.0 + rate));
     }
 
     @Test
@@ -59,7 +61,9 @@ public class SalaryIncreaseTest {
 
     private Collection<Double> increaseSalaries_java8(Collection<Double> salaries,
                                                       double rate) {
-        return null;
+        return salaries.stream()
+                .map(salary -> salary * (1.0 + rate))
+                .into(new ArrayList<Double>());
     }
 
 }

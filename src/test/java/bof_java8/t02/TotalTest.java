@@ -78,7 +78,9 @@ public class TotalTest {
     }
 
     private double getTotal_java8(Collection<Product> products) {
-        return 0.0;
+        return products.stream()
+                .map(product -> product.getQuantity() * product.getUnitPrice())
+                .reduce((subTotal, price) -> subTotal + price).orElse(0.0);
     }
 
     private static final Offset<Double> OFFSET = offset(1e-7);

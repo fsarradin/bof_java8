@@ -8,6 +8,10 @@ public class MessageTest {
 
     public interface Message {
         String getMessage();
+
+        default String getPrefixedMessage() {
+            return "It says: " + getMessage();
+        }
     }
 
     @Test
@@ -15,7 +19,7 @@ public class MessageTest {
         Message message = buildMessage("Hello");
 
         assertThat(message.getMessage()).isEqualTo("Hello");
-//        assertThat(message.getPrefixedMessage()).isEqualTo("It says: Hello");
+        assertThat(message.getPrefixedMessage()).isEqualTo("It says: Hello");
     }
 
     /*

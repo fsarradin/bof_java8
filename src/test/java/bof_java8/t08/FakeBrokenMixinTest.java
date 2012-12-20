@@ -34,7 +34,7 @@ public class FakeBrokenMixinTest {
         x1.setName("x1");
         x2.setName("x2");
 
-        assertThat(x1).isNotEqualTo(x2);
+//        assertThat(x1).isNotEqualTo(x2);
 
         assertThat(x1.getName()).isNotEqualTo(x2.getName());
     }

@@ -14,24 +14,36 @@ public class PhoneCoder {
         put('8', "TUV");
         put('9', "WXYZ");
     }};
+    private static final Map<Character, Character> DIGITS = charToDigit(MNEMONICS);
+    private final Map<String, Collection<String>> numbers;
 
     public static Map<Character, Character> charToDigit(Map<Character, String> mnemonics) {
-        return null;
+        HashMap<Character, Character> digits = new HashMap<>();
+
+        mnemonics.forEach((digit, letters)
+                -> letters.chars().forEach(letter -> digits.put(letter, digit)));
+
+        return digits;
     }
 
     public static String getNumberFrom(String word) {
-        return null;
+        return word.toUpperCase().chars()
+                .map(letter -> DIGITS.get(letter).toString())
+                .reduce("", (number, digit) -> number + digit);
     }
 
     public static Map<String, Collection<String>> distributeWords(Set<String> words) {
-        return null;
+        return words.stream()
+                .map(String::toUpperCase)
+                .groupBy(PhoneCoder::getNumberFrom);
     }
 
     public PhoneCoder(Set<String> words) {
+        numbers = distributeWords(words);
     }
 
     public Collection<String> translate(String number) {
-        return null;
+        return numbers.get(number);
     }
 
 }

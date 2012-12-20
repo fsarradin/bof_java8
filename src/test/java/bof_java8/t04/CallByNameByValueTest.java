@@ -29,7 +29,7 @@ public class CallByNameByValueTest {
 
     @Test
     public void should_succeed() {
-        boolean result = and_byName(() -> false, () -> loop());
+        boolean result = and_byName(() -> false, this::loop);
 
         assertThat(result).isFalse();
     }
